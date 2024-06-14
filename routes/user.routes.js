@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { body } from 'express-validator';
 import {
   GoogleLogin,
+  getusers,
   login,
   register,
 } from '../controllers/user.controllers.js';
@@ -61,5 +62,7 @@ userRouter
     validationError,
     GoogleLogin,
   );
+
+userRouter.get('/getuser', getusers);
 
 export { userRouter };

@@ -10,6 +10,12 @@ const generateAccessAndRefreshToken = async (user) => {
   };
 };
 
+const getusers = async (req, res) => {
+  const users = await UserModel.find();
+  res.status(200).json({ users });
+  return users;
+};
+
 /// register controller path:- "http://localhost:8000/api/v1/user/register"
 const register = AsyncHandler(async (req, res, next) => {
   const { firstname, email, password, age, country, lastname } = req.body;
@@ -65,7 +71,7 @@ const login = AsyncHandler(async (req, res, next) => {
 
   const response_data = {
     email: userData?.email,
-    sGoalId : userData?.sGoalId,
+    sGoalId: userData?.sGoalId,
     ...tokens,
   };
   const response = new ApiResponse(201, 'Successfully login!', response_data);
@@ -94,7 +100,7 @@ const GoogleLogin = AsyncHandler(async (req, res, next) => {
     // send response and mail
     const response_data = {
       email: userData?.email,
-      sGoalId : userData?.sGoalId,
+      sGoalId: userData?.sGoalId,
       ...tokens,
     };
     const response = new ApiResponse(201, 'Successfully login!', response_data);
@@ -110,7 +116,7 @@ const GoogleLogin = AsyncHandler(async (req, res, next) => {
 
       const response_data = {
         email: userData?.email,
-        sGoalId : userData?.sGoalId,
+        sGoalId: userData?.sGoalId,
         ...tokens,
       };
       const response = new ApiResponse(
@@ -125,4 +131,4 @@ const GoogleLogin = AsyncHandler(async (req, res, next) => {
   }
 });
 
-export { login, register, GoogleLogin };
+export { login, register, GoogleLogin, getusers };

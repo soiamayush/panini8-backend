@@ -31,7 +31,8 @@ app.use('/api/v1/predefinegoal', preDefineGoalRouter);
 app.use("/api/v1/goal", goalRouter);
 app.use("/api/v1/progress", progressRouter);
 app.use("/api/v1/testimonial", testimonialRouter);
-app.use("/api/v1/ask", askQuestionRouter)
+app.use("/api/v1/ask", askQuestionRouter);
+
 
 app.get('/', (req, res) => {
   return res.status(201).render('welcome-email');
