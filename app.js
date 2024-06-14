@@ -14,9 +14,9 @@ const app = express();
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(
   cors({
     origin: '*',
@@ -28,11 +28,14 @@ app.use(
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/question', questionRouter);
 app.use('/api/v1/predefinegoal', preDefineGoalRouter);
-app.use("/api/v1/goal", goalRouter);
-app.use("/api/v1/progress", progressRouter);
-app.use("/api/v1/testimonial", testimonialRouter);
-app.use("/api/v1/ask", askQuestionRouter);
+app.use('/api/v1/goal', goalRouter);
+app.use('/api/v1/progress', progressRouter);
+app.use('/api/v1/testimonial', testimonialRouter);
+app.use('/api/v1/ask', askQuestionRouter);
 
+app.get('/hello', (req, res) => {
+  return res.send('hello');
+});
 
 app.get('/', (req, res) => {
   return res.status(201).render('welcome-email');

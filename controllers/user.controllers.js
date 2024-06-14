@@ -10,10 +10,19 @@ const generateAccessAndRefreshToken = async (user) => {
   };
 };
 
-const getusers = async (req, res) => {
-  const users = await UserModel.find();
-  res.status(200).json({ users });
-  return users;
+const dummyFunction = async (req, res) => {
+  // Simulating a delay to mimic async behavior
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  // Simulated user data
+  const users = [
+    { id: 1, name: 'Alice' },
+    { id: 2, name: 'Bob' },
+    { id: 3, name: 'Charlie' },
+  ];
+  console.log(users);
+  // Sending a response
+  return res.status(200).send(users);
 };
 
 /// register controller path:- "http://localhost:8000/api/v1/user/register"
@@ -131,4 +140,4 @@ const GoogleLogin = AsyncHandler(async (req, res, next) => {
   }
 });
 
-export { login, register, GoogleLogin, getusers };
+export { login, register, GoogleLogin, dummyFunction };

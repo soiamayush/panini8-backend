@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { body } from 'express-validator';
 import {
   GoogleLogin,
-  getusers,
+  dummyFunction,
   login,
   register,
 } from '../controllers/user.controllers.js';
@@ -63,6 +63,6 @@ userRouter
     GoogleLogin,
   );
 
-userRouter.get('/getuser', getusers);
+userRouter.get('/getuser', dummyFunction);
 
 export { userRouter };
